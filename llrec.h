@@ -87,15 +87,19 @@ Node* llfilter(Node* head, Comp pred)
     if (head == nullptr){
       return nullptr; 
     }
+
+    // filter list
+    head->next = llfilter(head->next, pred);
     // check if val should be kept 
     if(pred(head->val)){
-      // recursively call on next node, filter remainder of list
-      head->next = llfilter(head->next, pred); 
-      // keep current node
-      return head;
+      // pointer to remaining 
+      Node* temp = head->next; 
+      delete head; 
+      // return remaining
+      return temp;
 
     } else {
-      return llfilter(head->next, pred); // skip val and move to next node
+      return head; // keep current node
     }
 
 }
