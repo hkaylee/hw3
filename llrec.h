@@ -83,7 +83,20 @@ Node* llfilter(Node* head, Comp pred)
     //*********************************************
     // Provide your implementation below
     //*********************************************
+    // if list is empty
+    if (head == nullptr){
+      return nullptr; 
+    }
+    // check if val should be kept 
+    if(pred(head->val)){
+      // recursively call on next node, filter remainder of list
+      head->next = llfilter(head->next, pred); 
+      // keep current node
+      return head;
 
+    } else {
+      return llfilter(head->next, pred); // skip val and move to next node
+    }
 
 }
 
