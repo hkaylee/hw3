@@ -96,9 +96,7 @@ NotGate::NotGate(Wire* a, Wire* b) : Gate(1,b){
 
 Event* NotGate::update(uint64_t current_time)
 {
-  char state = '0
-  
-  ';
+  char state = '0';
   char in = m_inputs[0]->getState();
   Event* e = nullptr;
 	
